@@ -562,7 +562,7 @@ def menu(choise, variants, confirmation, settings_choise, settings_variants):
         def draw_image(image, x, y):
             window.blit(image, (x, y))
 
-        # Draw choise arrow if no menu vartian is active
+        # Draw choise arrow if no menu vartiant is active
         if not draw_controls and not draw_settings and not show_credits:
             draw_image(menu_image, 0, 0)
             draw_image(arrow_image, arrow_x, arrow_y)
@@ -1097,7 +1097,6 @@ def main():
                     hole_y = ship.y + 8
 
                 window.blit(hole_image[3], (hole_x, hole_y))
-                #window.blit(hole_image[3], (hole_x, hole_y - 86))
 
                 if ship.jump_direction == 1:
                     window.blit(hole_image[3], (hole_x, hole_y - 86))
@@ -1117,7 +1116,6 @@ def main():
                     hole_y = ship.y
 
                 window.blit(hole_image[4], (hole_x, hole_y))
-                #window.blit(hole_image[4], (hole_x, hole_y - 86))
 
                 if ship.jump_direction == 1:
                     window.blit(hole_image[4], (hole_x, hole_y - 86))
@@ -1239,7 +1237,7 @@ def main():
                                                                                               bomber_reticles[i].y))
                                 missiles[i].exp_count += 4
 
-                    # Explosion type 3 and A FUCKING PIECE OF CROCODILE SHIT THAT COMMITED SEVERAL WARCRIMES AGAINST MY FUCKING SANITY!!!
+                    # Explosion type 3
                     elif bomber.attack_type == 3:
                         if not missiles[i].launched and not missiles[i].exploded and bomber_reticles[i].shot:
                             if missiles[i].exp_count + 4 >= fps:
@@ -1320,12 +1318,6 @@ def main():
 
                 # Boss explosion
                 if not boss.alive and not boss.exploded:
-                    #if boss.exp_count + 5 >= fps:
-                    #    boss.exp_count = 0
-                    ##    boss.exploded = True
-                    ##else:
-                    ##    window.blit(bomber_explosion_large_images[boss.exp_count // 10], (boss.x - 64,boss.y - 64))
-                    #    boss.exp_count += 4w
 
                     for i in range(len(boss_explosions)):
                         # Determines if explosion should happen
@@ -1384,7 +1376,6 @@ def main():
                 egg_counter += 1
             # Credits
             if show_credits:
-                #window.blit(menu_background_image, (0, 0))
                 credits(credits_x, credits_y, endgame_cutscene)
 
         pygame.display.update()
@@ -1884,7 +1875,7 @@ def main():
                                             damage_upgrade[ii].drop(aliens_tier1[i], 4, 4)
                                             break
 
-                    # Collision with ship (The fuck? I was able to break those lines all that time?)
+                    # Collision with ship (The hell? I was able to break those lines all that time?)
                     if ship.x <= aliens_tier1[i].x <= ship.x + 56 \
                             and ship.y <= aliens_tier1[i].y <= ship.y + 64 \
                             and ship.alive and not ship.blinking and not ship.jumping:
@@ -1920,7 +1911,7 @@ def main():
                             aliens_tier2_last_y = max(aliens_tier2_y_lst)
                     aliens_tier2[i].rebuild(aliens_tier2_last_y)
 
-                    # KAMIKAZEEE (Collision of ship with tier 2 aliens)!!!
+                    # Collision of ship with tier 2 aliens
                     if (aliens_tier2[i].x <= ship.x <= aliens_tier2[i].x + 64
                         or aliens_tier2[i].x <= ship.x + 64 <= aliens_tier2[i].x + 64) \
                             and (aliens_tier2[i].y <= ship.y <= aliens_tier2[i].y + 64
@@ -2276,7 +2267,7 @@ def main():
                     if boss.x < projectile[i].x < boss.x + 512 \
                     and boss.y < projectile[i].y < boss.y + 289 and projectile[i].fired:
                         
-                        # 500 IQ hitbox system
+                        # Hitbox system
                         if projectile[i].y < (projectile[i].x - boss.x) * ((projectile[i].x - boss.x) / projectile[i].y) + 235 and projectile[i].x < boss.x + 225:
                             if boss.health >= 1:
                                 if boss.health < 5000:
@@ -2497,7 +2488,7 @@ def main():
                         or (rand_num_start == 1 and rand_num_end == 1):
                         boss.attack_type = 0
                         boss.salvo_finished = False
-                        boss_missiles_amount = 5 # FUCK YOU FUCKING DOT!!! JUST FUCK YOU! I SPENT LIKE THREE DAYS ON TRYING TO FIX A BUG ONLY TO DISCOVER THAT IT WAS BECAUSE OF A DOT! It was boss.missiles_amount = 5
+                        boss_missiles_amount = 5
                         boss.shoots = False
 
                         for i in range(5):
@@ -2550,7 +2541,6 @@ def main():
             # Moving the player
             if (not ship.y < -70 and egg_list == [] and boss.exploded) or (ship.y < -10 and boss.exploded and not egg_list == []):
                 ship.put_in_position((width // 2) - 32, -100)
-                #show_credits = False
                 if not endgame_cutscene:
                     if not egg_list == []:
                         egg_list[0].image = pygame.transform.rotate(egg_list[0].image, -135.00)
@@ -2567,7 +2557,7 @@ def main():
         # Egg counter
         if egg_counter >= 35:
             end_everything = True
-            run = False # THERE IS NO WAY TO RUN FROM EGG! IT WILL FIND YOU...
+            run = False
 
         # Clearing dead tier 1 enemies
         for i in range(aliens_tier1_len):
